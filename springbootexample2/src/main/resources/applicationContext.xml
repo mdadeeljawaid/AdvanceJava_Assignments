@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    
+    
+     
+    
+    <bean  id="myproduct" class="practice.Product">
+      <constructor-arg value="101"></constructor-arg>
+       <constructor-arg value="Maggie"></constructor-arg>
+       <constructor-arg value="Nestle"></constructor-arg>
+       <constructor-arg>
+         <ref bean="inventory"/>
+       </constructor-arg>
+   </bean>
+   
+    <bean  id ="inventory" class="practice.ProductInventory">
+          <constructor-arg value="201"></constructor-arg>
+       <constructor-arg value="80" ></constructor-arg>
+       <constructor-arg value="Red"></constructor-arg>
+    
+    </bean>
+   
+   <bean  id="salebean" class="practice.Sales">
+      <constructor-arg  value="1" type="int"></constructor-arg>
+      <constructor-arg  value="aayush"></constructor-arg>
+      <property name="product" ref="myproduct"></property>
+    </bean>
+    
+    <bean id="mcq" class="practice_cd.Question">
+       <constructor-arg value="1"></constructor-arg>
+       <constructor-arg value="what is spring?"></constructor-arg>
+       <constructor-arg>
+        <list>
+          <value> Spring is framework</value>
+           <value> Spring is supports dependecy injection </value>
+           <value> dependecy  can be achieved by constructor or setter method </value>
+        
+        </list>
+       
+       </constructor-arg>
+    
+    </bean>
+    
+    <bean id="customer"  class="practice_cd.Customer">
+      <constructor-arg value="101"></constructor-arg>
+      <constructor-arg value="Chintu"></constructor-arg>
+      <constructor-arg>
+        <list>
+          <ref bean="paddress"/>
+          <ref bean="saddress"/>
+        
+        </list>
+      
+      </constructor-arg>
+    
+    </bean>
+    
+    <bean id="paddress" class="practice_cd.CustomerAddress">
+       <constructor-arg value="111"></constructor-arg>
+       <constructor-arg value="tilak nagar delhi"></constructor-arg>
+       <constructor-arg value="110021"></constructor-arg>
+    </bean>
+    
+     <bean id="saddress" class="practice_cd.CustomerAddress">
+       <constructor-arg value="112"></constructor-arg>
+       <constructor-arg value="mayur vihar phase 1 delhi"></constructor-arg>
+       <constructor-arg value="110091"></constructor-arg>
+    </bean>
+   
+     <bean id="leadbean" class="practice_sd.Lead">
+       <property name="leadid">
+         <value>1</value>
+       </property>
+       <property name="leadName">
+         <value>Pappu</value>
+       </property>
+       <property name="leadCourse">
+         <value>Web Development</value>
+       </property>
+     
+     </bean>
+ 
+     
+     <bean id="myproduct1" class="practice_sd.MyProduct">
+         <property name="mpid">
+           <value>11</value>
+         </property>
+          <property name="mproductName">
+           <value>Nirma</value>
+         </property>
+         <property name="myProductInventory" >
+           <ref bean="myProductInventory"/> 
+        </property>
+     </bean>
+     
+     <bean id="myProductInventory" class="practice_sd.MyProductInventory">
+         <property name="invid"> 
+           <value>501</value>
+         </property>
+          <property name="quantity"> 
+           <value>1000</value>
+         </property>
+         <property name="">
+         </property>
+     </bean>
+     
+   
+</beans>
